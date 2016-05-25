@@ -1,3 +1,6 @@
+;
+console.log("PART 1");
+
 function Animal(age, name, sound, region) {
 	var age = age;
 	var name = name;
@@ -50,9 +53,9 @@ function Animal(age, name, sound, region) {
 		}
 	}
 
-	this.say = function(){
-        console.log(this.sound);
-    }
+	this.say = function() {
+		console.log(this.sound);
+	}
 
 	this.goAway = function() {
 		if (this.getAge() > this.getMaxAge()) {
@@ -70,8 +73,8 @@ function Dog(animal) {
 	this.prototype = animal;
 	var maxAge = 10;
 
-	if (animal.sound == "woof") {
-		this.sound = animal.sound;
+	if (animal.sound != "woof") {
+		this.sound = "woof";
 	};
 }
 
@@ -82,8 +85,8 @@ function Cat(animal) {
 	this.prototype = animal;
 	this.maxAge = 15;
 
-	if (animal.sound == "meow") {
-		this.sound = animal.sound;
+	if (animal.sound != "meow") {
+		this.sound = "meow";
 	};
 }
 
@@ -94,22 +97,31 @@ function Woodpecker(animal) {
 	this.prototype = animal;
 	this.maxAge = 6;
 
-	if (animal.sound == "knock-knock") {
-		this.sound = animal.sound;
+	if (animal.sound != "knock-knock") {
+		this.sound = "knock-knock";
 	};
 }
 
 var getType = function(object) {
-        if (object.hasOwnProperty("getSound")) {
-            switch (object.getSound()) {
-            	case "woof": return "Dog";
-            	case "meow": return "Cat";
-            	case "knock-knock": return "Woodpecker";
-            	default: return "Other type";
-            }
-        }
-        return "unknown";
-    };
+	var sound;
+	if (object.hasOwnProperty("getSound")) {
+		sound = object.getSound();
+	} else if (object.prototype.hasOwnProperty("getSound")) {
+		sound = object.prototype.getSound();
+	}
+	switch (sound) {
+		case "woof":
+			return "Dog";
+		case "meow":
+			return "Cat";
+		case "knock-knock":
+			return "Woodpecker";
+		default:
+			return "Other type";
+	}
+
+	return "unknown";
+};
 
 var a1 = new Animal(8, "Sparkley", "woof", "US");
 var a2 = new Animal(14, "Kitty ^^", "meow", "Europe");
@@ -119,9 +131,10 @@ var c = new Cat(a1);
 var d = new Dog(a2);
 var w = new Woodpecker(a3);
 
-console.log(getType(a1));
-// console.log(getType(c)); // todo: fix
-// console.log(d.say());// todo: fix
+console.log(getType(a1));	// Dog
+console.log(getType(c)); 	// Cat
+console.log(getType(d));	// Dog
+console.log(getType(a3));	// Other type
 
 console.log(a1.goAway());
 // console.log(w.goAway()); // todo: fix

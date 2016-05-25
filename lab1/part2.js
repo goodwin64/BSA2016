@@ -1,3 +1,6 @@
+;
+console.log("PART 2");
+
 function Animal(age, name, sound, region) {
   this.age = age;
   this.name = name;
