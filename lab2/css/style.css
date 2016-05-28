@@ -2,3 +2,115 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+body {
+  margin: 0 auto;
+}
+
+#goods-app {
+  background: #fff none repeat scroll 0 0;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  margin: 130px 0 40px;
+  position: relative;
+}
+
+#goods-app h1 {
+  color: rgba(175, 47, 47, 0.15);
+  font-size: 100px;
+  font-weight: 100;
+  position: absolute;
+  text-align: center;
+  text-rendering: optimizelegibility;
+  top: -155px;
+  width: 100%;
+}
+
+#new-goods {
+  background: rgba(0, 0, 0, 0.004) none repeat scroll 0 0;
+  font-size: 26px;
+  border: medium none;
+  box-shadow: 0 -2px 1px rgba(0, 0, 0, 0.03) inset;
+  padding: 16px 16px 16px 60px;
+  width: 85%;
+}
+
+#select-all {
+  position: relative;
+}
+
+#goods-list {
+  list-style: none;
+}
+
+#goods-list li {
+  position: relative;
+}
+
+#goods-list li .toggle {
+  text-align: center;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+#goods-list li span {
+  margin-left: 45px;
+  display: block;
+}
+
+#goods-list li .destroy {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  bottom: 0;
+  width: 35px;
+  height: 35px;
+  margin: auto 0 13px;
+}
+
+#goods-list li .destroy:after {
+  content: "×";
+}
+
+#goods-list li:hover .destroy {
+  display: block;
+}
+
+.in-edit-text {
+  margin: 0;
+  padding: 6px;
+  position: relative;
+  width: 100%;
+}
+
+#main {
+  border-top: 1px solid #e6e6e6;
+  position: relative;
+  z-index: 2;
+}
+
+footer::before {
+  bottom: 0;
+  content: "";
+  height: 50px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+}
+
+footer {
+  padding: 10px 15px;
+  text-align: right;
+}
+
+#clear-completed:hover {
+  text-decoration: underline;
+}
+
+#clear-completed, html #clear-completed:active {
+  position: relative;
+}
