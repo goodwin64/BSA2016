@@ -65,6 +65,16 @@ $(document).ready(function() {
     }
   });
 
+  $goodsList.on("click", "span", function() {
+    var toggle = $(this).prev()[0];
+    if (!toggle) return;
+    if (toggle.checked) {
+      toggle.checked = false;
+    } else if (!toggle.checked) {
+      toggle.checked = true;
+    }
+  });
+
   $goodsList.on("dblclick", "span", function() {
     var el = $('<input type="text" class="in-edit-text"/>');
     el.data('initText', this.innerHTML);
