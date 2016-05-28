@@ -5,6 +5,8 @@ html, body {
 
 body {
   margin: 0 auto;
+  max-width: 720px;
+  min-width: 240px;
 }
 
 #goods-app {
@@ -56,6 +58,8 @@ body {
 }
 
 #goods-list li span {
+  white-space: pre;
+  padding: 15px 60px 15px 15px;
   margin-left: 45px;
   display: block;
 }
@@ -65,10 +69,12 @@ body {
   position: absolute;
   top: 0;
   right: 10px;
-  bottom: 0;
+  bottom: 5px;
   width: 35px;
-  height: 35px;
+  height: 40px;
   margin: auto 0 13px;
+  font-size: 35px;
+  transition: color 0.2s ease-out 0s;
 }
 
 #goods-list li .destroy:after {
@@ -80,7 +86,16 @@ body {
 }
 
 .in-edit-text {
+  border: 1px solid #999;
+  box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.2) inset;
+  box-sizing: border-box;
+  color: inherit;
+  font-family: inherit;
+  font-size: 30px;
+  font-weight: inherit;
+  line-height: 1.4em;
   margin: 0;
+  outline: medium none;
   padding: 6px;
   position: relative;
   width: 100%;
@@ -112,5 +127,7 @@ footer {
 }
 
 #clear-completed, html #clear-completed:active {
+  cursor: pointer;
+  line-height: 25px;
   position: relative;
 }
