@@ -25,16 +25,16 @@ app.get('/restapi', defaultRequest);
 app.get('/restapi/country', function(req, res) {
 	var data = {
 		"error":1,
-		"Hotels":""
+		"Countries":""
 	};
 	
-	connection.query("SELECT * from Hotel", function(err, rows, fields) {
+	connection.query("SELECT * from Country", function(err, rows, fields) {
 		if (rows.length != 0) {
 			data["error"] = 0;
-			data["Hotels"] = rows;
+			data["Countries"] = rows;
 			res.json(data);
 		} else {
-			data["Hotels"] = 'No hotels found..';
+			data["Countries"] = 'No countries found..';
 			res.json(data);
 		}
 	});

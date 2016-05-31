@@ -17,30 +17,22 @@ Cannot GET /requestWithError/
 4) GET http://localhost:8080/restapi/country
 {
     "error": 0,
-    "Hotels": [
+    "Countries": [
         {
-            "id": 1,
-            "Name": "hotelName1",
-            "Country": "ua",
-            "Description": "hotelDesc1"
+            "Name": "eng",
+            "Description": "countryDesc3"
         },
         {
-            "id": 2,
-            "Name": "hotelName2",
-            "Country": "rus",
-            "Description": "hotelDesc2"
+            "Name": "rus",
+            "Description": "countryDesc2"
         },
         {
-            "id": 3,
-            "Name": "hotelName3",
-            "Country": "eng",
-            "Description": "hotelDesc3"
+            "Name": "ua",
+            "Description": "countryDesc1"
         },
         {
-            "id": 4,
-            "Name": "hotelName4",
-            "Country": "usa",
-            "Description": "hotelDesc4"
+            "Name": "usa",
+            "Description": "countryDesc4"
         }
     ]
 }
