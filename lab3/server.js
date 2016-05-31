@@ -151,5 +151,28 @@ app.put('/restapi/country/hotels', function(req, res) {
 	}
 });
 
+/* Удалить определенный отель */
+app.delete('/restapi/country/hotels', function(req,res) {
+	var hotelId = req.body.id;
+	var data = {
+		"error":1,
+		"Hotels":""
+	};
+	if (!!hotelId) {
+		connection.query("DELETE FROM Hotel WHERE id=?", [hotelId], function(err, rows, fields) {
+			if (!!err) {
+				data["Hotels"] = "Error deleting data";
+			} else {
+				data["error"] = 0;
+				data["Hotels"] = "Hotel #(" + hotelId + ") Deleted Successfully";
+			}
+			res.json(data);
+		});
+	} else {
+		data["Hotels"] = "Please provide all required data (i.e : id )";
+		res.json(data);
+	}
+});
+
 	console.log("Connected & Listen to port 8080");
 });

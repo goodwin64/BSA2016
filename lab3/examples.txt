@@ -107,3 +107,11 @@ Cannot GET /requestWithError/
     "Countries": "",
     "Hotels": "Hotel [Canada top #2 hotel](894) Updated Successfully"
 }
+
+
+9)  DELETE http://localhost:8080/restapi/country/hotels
+    id:             894
+{
+    "error": 0,
+    "Hotels": "Hotel #(894) Deleted Successfully"
+}
