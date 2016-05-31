@@ -13,11 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // or maybe you prefer XML? ;)
 
 var defaultRequest = function(req, res){
-	var data = {
-		"Data":""
-	};
-	data["Data"] = "REST API: Hotels";
-	res.json(data);
+	res.send("Please use \n/restapi/country or \n/restapi/country/hotels");
 };	
 app.get('/', defaultRequest);
 app.get('/restapi', defaultRequest);
