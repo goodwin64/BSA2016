@@ -122,5 +122,34 @@ app.post('/restapi/country/hotels', function(req, res) {
 	}
 });
 
+/* Обновить информацию об определенном отеле */
+app.put('/restapi/country/hotels', function(req, res) {
+	var hotelId = req.body.id;
+	var hotelName = req.body.Name;
+	var countryName = req.body.Country;
+	var hotelDesc = req.body.Description;
+	var data = {
+		"error":1,
+		"Countries":""
+	};
+	if (!!hotelName && !!countryName && !!hotelDesc) {
+		var queryString = "UPDATE Hotel SET Name=?, Country=?, Description=? WHERE id=?";
+		var queryKeys = [hotelName, countryName, hotelDesc, hotelId];
+
+		connection.query(queryString, queryKeys, function(err, rows, fields) {
+			if (!!err) {
+				data["Hotels"] = "Error Updating data";
+			} else {
+				data["error"] = 0;
+				data["Hotels"] = "Hotel [" + hotelName + "](" + hotelId + ") Updated Successfully";
+			}
+			res.json(data);
+		});
+	} else {
+		data["Hotels"] = "Please provide all required data (i.e : id, name, country name, description)";
+		res.json(data);
+	}
+});
+
 	console.log("Connected & Listen to port 8080");
 });

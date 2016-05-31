@@ -95,3 +95,15 @@ Cannot GET /requestWithError/
     "error": 0,
     "Result": "Hotel Added Successfully"
 }
+
+
+8)  PUT http://localhost:8080/restapi/country/hotels
+    Name:           Canada top #2 hotel
+    Country:        cnd
+    Description:    desc... updated
+    id:             894
+{
+    "error": 0,
+    "Countries": "",
+    "Hotels": "Hotel [Canada top #2 hotel](894) Updated Successfully"
+}
