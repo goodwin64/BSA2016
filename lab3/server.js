@@ -64,6 +64,33 @@ app.get('/restapi/country/hotels', function(req, res) {
 	}
 });
 
+/* Получить информацию об определенном отеле */
+app.get('/restapi/country/hotels/:id', function(req, res) {
+	/* TODO: replace country by it's ID */
+	var hotelId = req.params.id;
+	var data = {
+		"error":1,
+		"Hotels":""
+	};
+	if (!!hotelId) {
+		var queryString = "SELECT * from Hotel WHERE `id`=?";
+		var queryKeys = [hotelId];
+
+		connection.query(queryString, queryKeys, function(err, rows, fields) {
+			if (!!err) {
+				data["Hotels"] = "Error occured while reading data";
+			} else {
+				data["error"] = 0;
+				data["Hotels"] = rows;
+			}
+			res.json(data);
+		});
+	} else {
+		data["Hotels"] = "Please provide all required data (i.e : id )";
+		res.json(data);
+	}
+});
+
 /* Добавить страну */
 app.post('/restapi/country', function(req, res) {
 	var countryName = req.body.Name;

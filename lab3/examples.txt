@@ -115,3 +115,16 @@ Cannot GET /requestWithError/
     "error": 0,
     "Hotels": "Hotel #(894) Deleted Successfully"
 }
+
+10) GET http://localhost:8080/restapi/country/hotels/3
+{
+    "error": 0,
+    "Hotels": [
+        {
+            "id": 3,
+            "Name": "hotelName3",
+            "Country": "eng",
+            "Description": "hotelDesc3"
+        }
+    ]
+}
