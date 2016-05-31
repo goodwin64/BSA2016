@@ -85,3 +85,13 @@ Cannot GET /requestWithError/
         }
     ]
 }
+
+
+7)  POST http://localhost:8080/restapi/country/hotels
+    Name:           Canada top #1 hotel
+    Country:        Canada
+    Description:    desc...
+{
+    "error": 0,
+    "Result": "Hotel Added Successfully"
+}

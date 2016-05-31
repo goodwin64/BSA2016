@@ -92,5 +92,35 @@ app.post('/restapi/country', function(req, res) {
 	}
 });
 
+/* Добавить отель в страну */
+app.post('/restapi/country/hotels', function(req, res) {
+	var hotelName = req.body.Name;
+	var countryName = req.body.Country;
+	var hotelDesc = req.body.Description;
+	console.log(hotelName, countryName, hotelDesc);
+	var data = {
+		"error":1,
+		"Result":""
+	};
+	if(!!hotelName && !!countryName && !!hotelDesc) {
+		var queryString = "INSERT INTO Hotel(`Name`,`Country`,`Description`) VALUES(?,?,?)";
+		var queryKeys = [hotelName, countryName, hotelDesc];
+
+		connection.query(queryString, queryKeys, function(err, rows, fields) {
+			console.log(err);
+			if (!!err) {
+				data["Result"] = "Error occured while adding data";
+			} else {
+				data["error"] = 0;
+				data["Result"] = "Hotel Added Successfully";
+			}
+			res.json(data);
+		});
+	} else {
+		data["Result"] = "Please provide all required data (i.e : NOT EMPTY name, country, description)";
+		res.json(data);
+	}
+});
+
 	console.log("Connected & Listen to port 8080");
 });
