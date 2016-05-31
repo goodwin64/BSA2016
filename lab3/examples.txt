@@ -36,3 +36,17 @@ Cannot GET /requestWithError/
         }
     ]
 }
+
+
+5) GET http://localhost:8080/restapi/country/hotels?countryName=usa
+{
+    "error": 0,
+    "Hotels": [
+        {
+            "id": 4,
+            "Name": "hotelName4",
+            "Country": "usa",
+            "Description": "hotelDesc4"
+        }
+    ]
+}

@@ -18,6 +18,7 @@ var defaultRequest = function(req, res){
 app.get('/', defaultRequest);
 app.get('/restapi', defaultRequest);
 
+/* Получить список стран */
 app.get('/restapi/country', function(req, res) {
 	var data = {
 		"error":1,
@@ -34,6 +35,33 @@ app.get('/restapi/country', function(req, res) {
 			res.json(data);
 		}
 	});
+});
+
+/* Получить список отелей в стране */
+app.get('/restapi/country/hotels', function(req, res) {
+	/* TODO: replace country by it's ID */
+	var countryName = req.query['countryName'];
+	var data = {
+		"error":1,
+		"Hotels":""
+	};
+	if (!!countryName) {
+		var queryString = "SELECT * from Hotel WHERE Country=?";
+		var queryKeys = [countryName];
+
+		connection.query(queryString, queryKeys, function(err, rows, fields) {
+			if (!!err) {
+				data["Hotels"] = "Error occured while reading data";
+			} else {
+				data["error"] = 0;
+				data["Hotels"] = rows;
+			}
+			res.json(data);
+		});
+	} else {
+		data["Hotels"] = "Please provide all required data (i.e : Country name)";
+		res.json(data);
+	}
 });
 
 	console.log("Connected & Listen to port 8080");
