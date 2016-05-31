@@ -50,3 +50,38 @@ Cannot GET /requestWithError/
         }
     ]
 }
+
+
+6)  POST http://localhost:8080/restapi/country/
+    Name:           cnd
+    Description:    Canada
+{
+    "error": 0,
+    "Countries": "Country Added Successfully"
+}
++ GET:
+{
+    "error": 0,
+    "Countries": [
+        {
+            "Name": "cnd",
+            "Description": "Canada"
+        },
+        {
+            "Name": "eng",
+            "Description": "countryDesc3"
+        },
+        {
+            "Name": "rus",
+            "Description": "countryDesc2"
+        },
+        {
+            "Name": "ua",
+            "Description": "countryDesc1"
+        },
+        {
+            "Name": "usa",
+            "Description": "countryDesc4"
+        }
+    ]
+}

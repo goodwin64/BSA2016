@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
 		password : 'root',
 		database : 'hotels',
 	});
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // or maybe you prefer XML? ;)
 
 var defaultRequest = function(req, res){
@@ -60,6 +60,34 @@ app.get('/restapi/country/hotels', function(req, res) {
 		});
 	} else {
 		data["Hotels"] = "Please provide all required data (i.e : Country name)";
+		res.json(data);
+	}
+});
+
+/* Добавить страну */
+app.post('/restapi/country', function(req, res) {
+	var countryName = req.body.Name;
+	var countryDesc = req.body.Description;
+	var data = {
+		"error":1,
+		"Countries":""
+	};
+	if(!!countryName && !!countryDesc) {
+		var queryString = "INSERT INTO Country VALUES(?,?)";
+		var queryKeys = [countryName, countryDesc];
+
+		connection.query(queryString, queryKeys, function(err, rows, fields) {
+			console.log(err, rows, fields);
+			if (!!err) {
+				data["Countries"] = "Error occured while adding data";
+			} else {
+				data["error"] = 0;
+				data["Countries"] = "Country Added Successfully";
+			}
+			res.json(data);
+		});
+	} else {
+		data["Countries"] = "Please provide all required data (i.e : NOT EMPTY country name, country description)";
 		res.json(data);
 	}
 });
